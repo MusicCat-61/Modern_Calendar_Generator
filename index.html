@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор календарей</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@jaames/iro@5.5.2/dist/iro.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="current-year">2025</h1>
+            <div class="controls">
+                <div class="control-group">
+                    <label for="font-select">Шрифт:</label>
+                    <select id="font-select">
+                        <option value="Montserrat, sans-serif">Montserrat</option>
+                        <option value="Arial, sans-serif">Arial</option>
+                        <option value="'Times New Roman', serif">Times New Roman</option>
+                        <option value="'Courier New', monospace">Courier New</option>
+                        <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Цвет года:</label>
+                    <div id="year-color-picker"></div>
+                </div>
+                <div class="control-group">
+                    <label>Цвет месяца:</label>
+                    <div id="month-color-picker"></div>
+                </div>
+                <div class="control-group">
+                    <label>Цвет дней:</label>
+                    <div id="days-color-picker"></div>
+                </div>
+                <div class="control-group">
+                    <label>Цвет выходных:</label>
+                    <div id="weekend-color-picker"></div>
+                </div>
+                <div class="control-group">
+                    <label>Размер года: <span id="year-size-value">30</span>px</label>
+                    <input type="range" id="year-size" min="10" max="50" value="30">
+                </div>
+                <div class="control-group">
+                    <label>Размер месяца: <span id="month-size-value">20</span>px</label>
+                    <input type="range" id="month-size" min="10" max="40" value="20">
+                </div>
+                <div class="control-group">
+                    <label>Размер чисел: <span id="days-size-value">14</span>px</label>
+                    <input type="range" id="days-size" min="8" max="30" value="14">
+                </div>
+                <div class="control-group">
+                    <label for="paper-size">Размер бумаги:</label>
+                    <select id="paper-size">
+                        <option value="a5">A5</option>
+                        <option value="a4" selected>A4</option>
+                        <option value="a3">A3</option>
+                        <option value="a2">A2</option>
+                        <option value="a1">A1</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="orientation">Ориентация:</label>
+                    <select id="orientation">
+                        <option value="portrait">Книжная</option>
+                        <option value="landscape">Альбомная</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <div class="calendar-container">
+            <div class="calendar-nav">
+                <label for="font-select" style="align-self: center;">Выберите год:</label>
+                <button id="prev-year" class="nav-button">←</button>
+                <button id="next-year" class="nav-button">→</button>
+            </div>
+
+            <div class="month-selection">
+                <div class="select-wrapper">
+                    <select id="month-select">
+                        <option value="1">Январь</option>
+                        <option value="2">Февраль</option>
+                        <option value="3">Март</option>
+                        <option value="4">Апрель</option>
+                        <option value="5">Май</option>
+                        <option value="6">Июнь</option>
+                        <option value="7">Июль</option>
+                        <option value="8">Август</option>
+                        <option value="9">Сентябрь</option>
+                        <option value="10">Октябрь</option>
+                        <option value="11">Ноябрь</option>
+                        <option value="12">Декабрь</option>
+                    </select>
+                </div>
+                <div class="special-buttons">
+                    <button id="remaining-months" class="special-button">Текущий и оставшиеся</button>
+                    <button id="whole-year" class="special-button">Весь год</button>
+                </div>
+            </div>
+
+            <div class="export-options">
+                <div class="export-option">
+                    <input type="radio" id="export-png" name="export-format" value="png" checked>
+                    <label for="export-png">PNG</label>
+                </div>
+                <div class="export-option">
+                    <input type="radio" id="export-pdf" name="export-format" value="pdf">
+                    <label for="export-pdf">PDF</label>
+                </div>
+                <button id="export-button" class="export-button">Экспорт</button>
+            </div>
+
+            <div id="calendar-preview">
+                <!-- Здесь будет отображаться календарь -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5.5.2/dist/iro.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
